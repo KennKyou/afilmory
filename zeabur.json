@@ -1,0 +1,39 @@
+{
+  "$schema": "https://zeabur.com/schema.json",
+  "services": [
+    {
+      "name": "core",
+      "dockerfile": "Dockerfile.core",
+      "buildContext": ".",
+      "ports": [
+        {
+          "id": "api",
+          "port": 1841,
+          "type": "HTTP"
+        }
+      ],
+      "env": {
+        "NODE_ENV": "production",
+        "HOSTNAME": "0.0.0.0",
+        "PORT": "1841"
+      },
+      "volumes": []
+    },
+    {
+      "name": "ssr",
+      "dockerfile": "Dockerfile",
+      "buildContext": ".",
+      "ports": [
+        {
+          "id": "web",
+          "port": 3000,
+          "type": "HTTP"
+        }
+      ],
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "volumes": []
+    }
+  ]
+}
